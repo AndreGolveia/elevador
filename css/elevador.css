@@ -107,3 +107,11 @@
 	top: 0;
 	right: 0;
 }
+
+#elevador{
+	display: flex;
+	justify-content: center;
+	background-color: rgb(233, 241, 239);
+	height: 100%;
+	width: 100%;
+}

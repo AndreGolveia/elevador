@@ -5,8 +5,6 @@ var Elevador = function(){
 	this.movimento = false;
 	this.fila = [];
 
-
-
 	this.abrirPortas = function(callback){
 
 		var portas = this.$elevador.find(".porta");
@@ -44,8 +42,17 @@ var Elevador = function(){
 	};
 
 	this.mostrarAndar = function(numero){
+		if(numero == '1'){
+			var texto = 'T'
+		}else if(numero == '2'){
+			var texto = '1'
+		}else if(numero == '3'){
+			var texto = '2'
+		}else if(numero == '4'){
+			var texto = '3'
+		}
 
-		this.$elevador.find(".letreiro").text(numero);
+		this.$elevador.find(".letreiro").text(texto);
 
 	};
 
@@ -83,7 +90,6 @@ var Elevador = function(){
 					for(var x = andarAtual; x >= numero; x--){
 						andares.push(x);
 					}
-
 				}
 
 				var vez = 0;
@@ -152,24 +158,6 @@ var Elevador = function(){
 
 		$("body").append(t.$elevador);
 
-		/* Espelho */
-		navigator.getUserMedia  = navigator.getUserMedia ||
-			                      navigator.webkitGetUserMedia ||
-			                      navigator.mozGetUserMedia ||
-			                      navigator.msGetUserMedia;
-
-		navigator.getUserMedia({video: true, audio: false}, function(localMediaStream) {
-		    
-		    var video = t.$elevador.find(".espelho")[0];
-		    video.src = window.URL.createObjectURL(localMediaStream);
-
-		}, function(e){
-
-			console.log('Sem permissão!', e);
-			
-		});
-
-
 	};
 
 	init();
@@ -179,7 +167,5 @@ var Elevador = function(){
 $(function(){
 
 	window.e1 = new Elevador();
-	window.e2 = new Elevador();
-	window.e3 = new Elevador();
 
 });
