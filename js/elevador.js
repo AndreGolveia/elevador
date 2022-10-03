@@ -4,19 +4,20 @@ var Elevador = function(){
 	this.$elevador;
 	this.movimento = false;
 	this.fila = [];
+	const music = new Audio('./sound/music.mp3');
 
 	this.abrirPortas = function(callback){
-
+		music.pause()
 		var portas = this.$elevador.find(".porta");
 
 		if(portas.hasClass("open")){
-
+			
 			callback();
 
 		}else{
 
 			portas.addClass("open");
-
+		
 			setTimeout(callback, 1000);
 
 		}
@@ -24,7 +25,7 @@ var Elevador = function(){
 	};
 
 	this.fecharPortas = function(callback){
-
+	
 		var portas = this.$elevador.find(".porta");
 
 		if(portas.hasClass("open")){
@@ -57,9 +58,8 @@ var Elevador = function(){
 	};
 
 	this.irParaAndar = function(numero){
-
+		music.play()
 		if(!t.movimento){
-
 			t.fecharPortas(function(){
 
 				t.movimento = true;
